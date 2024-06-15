@@ -40,7 +40,12 @@ namespace IsekaiMod.Content.Features.IsekaiProtagonist.Archetypes.Mastermind {
             registered = registered.AppendToArray(prog);
         }
         public static void Prohibit(BlueprintProgression prog) {
-            prohibited = prohibited.AppendToArray(prog);
+            if (IsekaiContext.AddedContent.Other.IsDisabled("Relax Legacy Choices")) {
+                prohibited = prohibited.AppendToArray(prog);
+            }
+            else {
+                registered = registered.AppendToArray(prog);
+            }
         }
 
         public static void Finish() {
